@@ -58,10 +58,12 @@ public class StudentService {
             student.setEmail(email);
         }
 
-        if(dob != null && !Objects.equals(student.getDob(), dob)){
+        if(dob != null){
             LocalDate _dob = LocalDate.parse(dob);
-            student.setDob(_dob);
-            student.setAge(student.getAge());
+            if (!Objects.equals(student.getDob(), _dob)){
+                student.setDob(_dob);
+                student.setAge(student.getAge());
+            }
         }
     }
 }
